@@ -1,30 +1,3 @@
-// import React, { useEffect } from 'react';
-// import './App.css';
-// import { io } from 'socket.io-client';
-// const socket = io("http://localhost:3000");
-
-// function App() {
-//   useEffect(() => {
-//     socket.on('connect', () => {
-//       console.log('connected');
-//     });
-    
-//     socket.emit('hello', { name: 'abin' });
-
-//     return () => {
-//       socket.off('connect');
-//       socket.off('hello');
-//     };
-//   }, []);
-
-//   return (
-//     <div className="App">
-//       <h1>Socket.IO React App</h1>
-//     </div>
-//   );
-// }
-
-// export default App;
 
 import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
@@ -41,7 +14,17 @@ function App() {
   useEffect(() => {
     const pc = new RTCPeerConnection({
       iceServers: [
-        { urls: 'stun:stun.l.google.com:19302' }
+        { urls: 'stun:stun.l.google.com:19302' },
+        {
+          'url': 'turn:192.158.29.39:3478?transport=udp',
+          'credential': 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
+          'username': '28224511:1379330808'
+        },
+        {
+          'url': 'turn:192.158.29.39:3478?transport=tcp',
+          'credential': 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
+          'username': '28224511:1379330808'
+        }
       ]
     });
 

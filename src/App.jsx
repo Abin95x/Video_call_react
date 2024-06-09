@@ -4,6 +4,8 @@ import './App.css';
 import { io } from 'socket.io-client';
 
 const socket = io("https://video-call-server-1zwl.onrender.com");
+// const socket = io("http://localhost:3000");
+
 
 function App() {
   const localVideoRef = useRef(null);
@@ -14,16 +16,16 @@ function App() {
   useEffect(() => {
     const pc = new RTCPeerConnection({
       iceServers: [
-        { urls: 'stun:stun.l.google.com:19302' },
+        { urls: 'stun:stun.l.google.com:19302' }, 
         {
-          'url': 'turn:192.158.29.39:3478?transport=udp',
-          'credential': 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
-          'username': '28224511:1379330808'
+          url: 'turn:192.158.29.39:3478?transport=udp',  
+          credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
+          username: '28224511:1379330808'
         },
         {
-          'url': 'turn:192.158.29.39:3478?transport=tcp',
-          'credential': 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
-          'username': '28224511:1379330808'
+          url: 'turn:192.158.29.39:3478?transport=tcp',
+          credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
+          username: '28224511:1379330808'
         }
       ]
     });
